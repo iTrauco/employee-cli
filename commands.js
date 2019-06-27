@@ -2,12 +2,15 @@ const program = require('commander');
 const { prompt } = require('inquirer');
 const {
     addEmployee, 
-    findEmployee
+    findEmployee,
+    updateEmployee,
+    removeEmployee,
+    listEmployees
 } = require('./index');
 //
 //////==================================================================
 //////==================================================================
-// End User Questions
+// User Questions
 const questions = [
     {
         type: 'input',
@@ -33,11 +36,12 @@ const questions = [
 //
 //////==================================================================
 //////==================================================================
-// 
+//  Program Commands | ... add, find, update, remove, list all
 program
     .version('1.0.0')
     .description('Employee Management System')
 
+// Add command
 program
     .command('add')
     .alias('a')
@@ -46,11 +50,35 @@ program
         prompt(questions).then(answers => addEmployee(answers));
 });
 
+// Find command
 program
     .command('find <name>')
     .alias('f')
     .description('Find an employee')
     .action(name => findEmployee(name));
+
+// Update command
+program
+    .command('update <_id>')
+    .alias('u')
+    .description('Update an employee')
+    .action((_id) => {
+        prompt(questions).then(answers => updateEmployee(_id, answers));
+});
+
+// Remove command
+program
+    .command('remove <_id>')
+    .alias('r')
+    .description('Remove an employee')
+    .action(_id => removeEmployee(_id));
+
+// List command
+program
+.command('list')
+.alias('l')
+.description('List all employees')
+.action(() => listEmployees());
 
 program.parse(process.argv);
 

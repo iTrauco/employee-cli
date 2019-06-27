@@ -30,8 +30,39 @@ const findEmployee = (name) => {
     });
 }
 
+// Update employee
+const updateEmployee = (_id, employee) => {
+    Employee.update({ _id }, employee)
+    .then(employee => {
+        console.info('Customer Update')
+        db.close();
+    });
+}
+
+// Remove employee
+const removeEmployee = (_id, employee) => {
+    Employee.remove({ _id }, employee)
+    .then(employee => {
+        console.info('Customer Removed')
+        db.close();
+    });
+}
+
+// List employee
+const listEmployees = () => {
+    Employee.find()
+    .then(employee => {
+        console.info(employee);
+        console.info(`${employee.length} employees`)
+        db.close();
+    });
+}
+
 // Export all methods
 module.exports = {
     addEmployee,
-    findEmployee
+    findEmployee,
+    updateEmployee,
+    removeEmployee, 
+    listEmployees
 }
