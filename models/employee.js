@@ -9,5 +9,5 @@ const employeeSchema = mongoose.Schema({
 });
 
 // Define and export
-module.exports = mongoose.model('Employee', employeeSchema)
+module.exports = mongoose.model('Employee', employeeSchema);
 

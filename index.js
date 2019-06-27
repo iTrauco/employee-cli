@@ -8,16 +8,15 @@ mongoose.connect('mongodb://localhost:27017/contact-manager', { useNewUrlParser:
 const db = mongoose.connection;
 
 // Import model
-const employee = require('./models/employee');
+const Employee = require('./models/employee');
 
 // Add Employee
 const addEmployee = (employee) => {
-    employee.create(employee).then(employee => {
-        console.info('New Employee Added')
-        db.close();
+    Employee.create(employee).then(employee => {
+      console.info('New Employee Added');
+      db.close();
     });
-}
-
+  }
 
 // Find Employee
 const findEmployee = (name) => {
