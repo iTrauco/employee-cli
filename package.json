@@ -1,0 +1,28 @@
+{
+  "name": "employee-cli",
+  "version": "1.0.0",
+  "description": "Employee Management CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iTrauco/employee-cli.git"
+  },
+  "keywords": [
+    "node",
+    "mongodb"
+  ],
+  "author": "Christopher Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iTrauco/employee-cli/issues"
+  },
+  "homepage": "https://github.com/iTrauco/employee-cli#readme",
+  "dependencies": {
+    "commander": "^2.20.0",
+    "inquirer": "^6.4.1",
+    "mongoose": "^5.6.1"
+  }
+}
