@@ -8,16 +8,15 @@ mongoose.connect('mongodb://localhost:27017/contact-manager', { useNewUrlParser:
 const db = mongoose.connection;
 
 // Import model
-const employee = require('./models/employee');
+const Employee = require('./models/employee');
 
 // Add Employee
 const addEmployee = (employee) => {
-    employee.create(employee).then(employee => {
-        console.info('New Employee Added')
-        db.close();
+    Employee.create(employee).then(employee => {
+      console.info('New Employee Added');
+      db.close();
     });
-}
-
+  }
 
 // Find Employee
 const findEmployee = (name) => {
@@ -31,8 +30,39 @@ const findEmployee = (name) => {
     });
 }
 
+// Update employee
+const updateEmployee = (_id, employee) => {
+    Employee.update({ _id }, employee)
+    .then(employee => {
+        console.info('Customer Update')
+        db.close();
+    });
+}
+
+// Remove employee
+const removeEmployee = (_id, employee) => {
+    Employee.remove({ _id }, employee)
+    .then(employee => {
+        console.info('Customer Removed')
+        db.close();
+    });
+}
+
+// List employee
+const listEmployees = () => {
+    Employee.find()
+    .then(employee => {
+        console.info(employee);
+        console.info(`${employee.length} employees`)
+        db.close();
+    });
+}
+
 // Export all methods
 module.exports = {
     addEmployee,
-    findEmployee
+    findEmployee,
+    updateEmployee,
+    removeEmployee, 
+    listEmployees
 }
